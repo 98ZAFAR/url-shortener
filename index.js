@@ -23,8 +23,7 @@ app.get('/:shortID', async(req, res)=>{
             },
         },
     });
-    // if(!entry) return res.status(404).json({error:"Entry not found"});
-    console.log(entry.redirectURL);
+    
     res.redirect(entry.redirectURL);
 });
 
