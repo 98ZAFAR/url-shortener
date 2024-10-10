@@ -4,6 +4,7 @@ const {dotenv} = require('dotenv').config();
 const app = express();
 const {connectDB} = require('./dbConnection');
 const {urlRoute} = require('./routes/urlRoute');
+const userRoute = require('./routes/userRoute');
 const staticRoute = require('./routes/staticRoute');
 const URL = require('./model/urlModel');
 const port = process.env.PORT||3000;
@@ -17,6 +18,7 @@ app.set("view engine", "ejs");
 app.set("views", path.resolve('./views'));
 
 app.use('/', staticRoute);
+app.use('/user', userRoute);
 
 app.use('/url', urlRoute);
 app.get('/url/:shortID', async(req, res)=>{
